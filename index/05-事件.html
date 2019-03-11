@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--onload    当下面所有文档都执行完成后在执行onload-->
+    <script>
+        window.onload=function(){
+            var btn=document.getElementById("btn");
+            btn.onclick=function () {
+                alert("点我干嘛");
+            }
+        }
+    </script>
+</head>
+<body>
+<button name="btn" id="btn" class="my_btn">点我</button>
+<!--document对象-->
+<script type="text/html">
+    // document对象可以对html页面中所有元素进行访问，增删改查
+    console.log(window.document);//获取整个文档
+    // 1.获取事件源
+    var btn1=document.getElementById(`btn`);
+    var btn2=document.getElementsByClassName("my_btn")[0];
+    var btn3=document.getElementsByTagName("button")[0];
+    var btn4=document.getElementsByName("btn")[0];
+    var btn5=document.querySelector(".btn");
+    console.log(btn1);
+    console.log(btn2);
+    console.log(btn3);
+    console.log(btn4);
+    console.log(btn5);
+</script>
+<!--事件绑定-->
+<script type="text/html">
+    // 1.
+    var btn=document.getElementById("btn");
+    /*btn.onclick=function () {
+        alert("点我干嘛");
+    }*/
+    //2.
+    btn.onclick=fn;
+    function fn() {
+        alert("点我干嘛");
+    }
+
+</script>
+<!--如果把javascript放在head里的话，则先被解析,但这时候body还没有解析。
+（常规html结构都是head在前，body在后）如果head的js代码是需要传入一个参数（在body中调用该方法时，才会传入参数），
+并需调用该参数进行一系列的操作，那么这时候肯定就会报错，因为函数该参数未定义（undefined）。
+而为什么我们经常看到有很多的人把js脚本放到head里面都不担心出问题？
+因为通常把javascript放在head里的话，一般都会绑定一个监听，当全部的html文档解析完之后，再执行代码
+$(document).ready(function(){
+//执行代码
+})
+推荐将所有的<script>标签尽可能放到<body>标签的底部，以尽量减少对整个页面下载的影响。
+-->
+
+
+
+</body>
+</html>

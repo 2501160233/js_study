@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #top{
+            padding: 20px;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 15px;
+        }
+        img{
+            width: 200px;
+        }
+        #bottom{
+            position:relative;
+        }
+
+        
+    </style>
+</head>
+<body>
+<div id="top">
+<button>三列</button>
+<button>五列</button>
+</div>
+<div id="bottom">
+<div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div>
+<div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div>
+<div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div>
+<div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div>
+<div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div><div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div><div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div><div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div><div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div>
+<div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div>
+<div class="box">
+    <img src="../images/img4.jpg" alt="null">
+</div>
+    <div class="box">
+        <img src="../images/img4.jpg" alt="null">
+    </div>
+    <div class="box">
+        <img src="../images/img4.jpg" alt="null">
+    </div>
+    <div class="box">
+        <img src="../images/img4.jpg" alt="null">
+    </div>
+    <div class="box">
+        <img src="../images/img4.jpg" alt="null">
+    </div>
+</div>
+<script>
+    window.onload=function () {
+        var btns=document.getElementById('top').children;
+        var boxs=document.getElementsByClassName('box');
+        //遍历
+        btns[0].onclick=function(){
+            var boxw=200,boxh=200,margin=15,allcols=3;
+            for(var i=0;i<boxs.length;i++){
+                //计算当前盒子所在的行和列
+                var row=parseInt(i/allcols);
+                var col=parseInt(i%allcols);
+               // console.log("hanglie"+row+"lie "+col);
+                //盒子的定位
+                var currentbox=boxs[i];
+                currentbox.style.position='absolute';
+                currentbox.style.left=col*(boxw+margin)+'px';
+                currentbox.style.top=row*(boxh+margin)+'px';
+            }
+        }
+        btns[1].onclick=function(){
+            var boxw=200,boxh=200,margin=15,allcols=5;
+            for(var i=0;i<boxs.length;i++){
+                //计算当前盒子所在的行和列
+                var row=parseInt(i/allcols);
+                var col=parseInt(i%allcols);
+                // console.log("hanglie"+row+"lie "+col);
+                //盒子的定位
+                var currentbox=boxs[i];
+                currentbox.style.position='absolute';
+                currentbox.style.left=col*(boxw+margin)+'px';
+                currentbox.style.top=row*(boxh+margin)+'px';
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

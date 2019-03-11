@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: black;
+        }
+        span{
+            width: 30px;
+            height: 30px;
+            background-image: url("images/星星.png");
+            position: absolute;
+            background-size:100% 100% ;
+            animation:flash 1s alternate infinite;
+
+        }
+        span:hover{
+            transform:scale(5,5) rotate(180deg) !important;
+            transition: all 1s;
+        }
+        @keyframes flash {
+              0%{
+                  opacity: 0;
+              }
+              100%{
+                  opacity: 1;
+              }
+          }
+    </style>
+</head>
+<body>
+<span></span>
+<script>
+    window.onload=function () {
+        //求出屏幕尺寸
+        var screenW=document.documentElement.clientWidth;
+        var screenH=document.documentElement.clientHeight;
+        //动态创建星星
+        for(var i=0;i<150;i++){
+        var span=document.createElement('span');
+        document.body.appendChild(span);
+        //随机生成数
+        var x=parseInt(Math.random()*screenW);
+        var y=parseInt(Math.random()*screenH);
+        span.style.left=x+'px';
+        span.style.top=y+'px';
+        //随机缩放
+        var scale=Math.random()*2.3;
+        span.style.transform='scale('+scale+','+scale+')';
+        var pin=Math.random()*2;
+        span.style.animationDelay=pin+'s';
+    }
+    }
+</script>
+</body>
+</html>

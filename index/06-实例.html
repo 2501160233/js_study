@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+      #close{
+          position: absolute;
+          top: 10px;
+          left: 600px;
+      }
+      .box{
+            width: 500px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="box" >
+    <img id="icon" src="../images/ad2.jpg" alt="none" >
+    <img id="close" src="../images/bg-plane.png" alt="none" width="40px">
+</div>
+<!--// logo.onmouseover=function(){}  鼠标进入时触发事件-->
+<script>
+    window.onload=function(){
+            //获取需要的标签
+            var box=document.getElementById("box");
+            var close=document.getElementById("close");
+            //给事件绑定事件源
+            close.onclick=function () {
+                box.style.display="none";
+            }
+    }
+
+</script>
+</body>
+</html>

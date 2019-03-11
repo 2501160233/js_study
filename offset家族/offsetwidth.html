@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 500px;
+            height: 400px;
+            background-color: red;
+            padding:10px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="box" style="width: 200px; height: 100px; border: 1px solid #000;" ></div>
+<script>
+    var box=document.getElementById("box");
+    //offsetHeight=内容+内边距+边框
+    console.log(box.offsetHeight,box.offsetWidth);
+    //offsetHeight,offsetWidth只能获取，不能改变宽高
+    console.log(box.style.width);//不包含边框，只能获取行内的样式，可以改变
+</script>
+</body>
+</html>

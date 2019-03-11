@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        margin: 50px auto;
+        padding:15px;
+    }
+    #panel3{
+        text-align: center
+    }
+</style>
+<body>
+   <div id="panel">
+       <section id="panel1">
+           <h2>歌曲排行榜</h2>
+           <hr>
+       </section>
+       <section id="panel2">
+           <input type="checkbox">1.aaaaaa <br>
+           <input type="checkbox">2.bbbbbb <br>
+           <input type="checkbox">3.cccccc <br>
+           <input type="checkbox">4.dddddd <br>
+           <input type="checkbox">5.eeeeee <br>
+           <input type="checkbox">6.ffffff <br>
+           <input type="checkbox">7.gggggg <br>
+       </section>
+       <hr>
+       <section id="panel3">
+           <button id="select">全选</button>
+           <button id="remove">清除</button>
+           <button id="reverse">反选</button>
+       </section>
+   </div>
+   <script>
+       window.onload=function(){
+           //获取所有复选框
+           var inputs=document.querySelectorAll("input");
+           //全选
+           $("select").onclick=function () {
+               for(var i=0;i<inputs.length;i++){
+                   inputs[i].checked=true;
+               }
+           }
+           $("remove").onclick=function () {
+               for(var i=0;i<inputs.length;i++){
+                   inputs[i].checked=false;
+               }
+           }
+           $("reverse").onclick=function () {
+               for(var i=0;i<inputs.length;i++){
+                   inputs[i].checked=!inputs[i].checked;
+               }
+           }
+           function $(id) {
+               return typeof  id==="string"?document.getElementById(id):null;
+               
+           }
+       }
+   </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无线轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 750px;
+            height: 320px;
+            padding: 5px;
+            border: 1px solid #cccccc;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #top {
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        #top #ul {
+            width: 4500px;
+            height: 310px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #top #ul li {
+            width: 750px;
+            height: 320px;
+            float: left;
+        }
+
+        #box #ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        #box #ol li {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #c4c4c4;
+            margin-right: 5px;
+            float: left;
+            cursor: pointer;
+        }
+
+        .current {
+            background-color: red !important;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="top">
+        <ul id="ul">
+            <li><img src="imgs/pic01.jpg" alt=""></li>
+            <li><img src="imgs/pic02.jpg" alt=""></li>
+            <li><img src="imgs/pic03.jpg" alt=""></li>
+            <li><img src="imgs/pic04.jpg" alt=""></li>
+            <li><img src="imgs/pic05.jpg" alt=""></li>
+        </ul>
+    </div>
+    <ol id="ol">
+    </ol>
+</div>
+<script src="js/myFunc.js"></script>
+<script>
+    window.onload = function () {
+        var current = document.getElementsByClassName("current");
+        var currentIndex = 0, indicatorIndex = 0;
+        var lis = $("ul").children;
+        //克隆li标签
+        $("ul").appendChild(lis[0].cloneNode(true));
+        //动态创建页码
+        for (var i = 0; i < lis.length - 1; i++) {
+            var li = document.createElement("li");
+            $("ol").appendChild(li);
+        }
+        //第一个被选中
+        $("ol").children[0].className = "current";
+        //鼠标进入圆点
+        var olLis = $("ol").children;
+        for (var j = 0; j < olLis.length; j++) {
+            (function (j) {
+                // 5.1 获取单独的li标签
+                var li = olLis[j];
+
+                // 5.2 鼠标进入
+                li.onmouseover = function () {
+                    for (var i = 0; i < olLis.length; i++) {
+                        olLis[i].className = "";
+                    }
+
+                    this.className = "current";
+                    constant($("ul"), -(750 * j), 100);
+                    currentIndex = indicatorIndex = j;
+                };
+            })(j);
+        }
+        //自动轮播
+        var timer = setInterval(autoPlay,1000);
+
+
+        //设置和清除定时器
+        $("box").onmouseover=function () {
+            clearInterval(timer);
+        };
+        $("box").onmouseout=function () {
+            timer=setInterval(autoPlay,1000);
+        };
+        function autoPlay() {
+            currentIndex++;
+            if (currentIndex > lis.length - 1) {
+                currentIndex = 1;
+                $("ul").style.left = 0;
+            }
+            constant($("ul"), -currentIndex * 750, 100);
+
+            indicatorIndex++;
+            if (indicatorIndex > olLis.length - 1) {
+                    indicatorIndex = 0;
+            }
+            for (var i = 0; i < olLis.length; i++) {
+                olLis[i].className = "";
+            }
+            olLis[indicatorIndex].className = "current";
+        }
+    };
+</script>
+</body>
+</html>

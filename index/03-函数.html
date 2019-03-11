@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--函数声明-->
+<script type="text/html">
+    // 1.函数声明方式
+    function log() {
+        console.log(10);
+    }
+    log();//调用函数
+    // 2.函数表达式声明方式
+    var add=function () {
+        console.log(1+2);
+    }
+    add();
+    // 3.使用function构造函数
+    var add2=new Function('console.log(1+2);');
+    add2();
+</script>
+<script type="text/html">
+    function sum(num1,num2) {
+        console.log(num1+num2);
+    }
+    sum(1,2);
+    //数组
+    function sum1(numArr) {
+        var value=0;
+        for(var i=0;i<numArr.length;i++)
+        value +=numArr[i];
+        console.log(value);
+    }
+    var arr=[1,2,3,4];
+    sum1(arr);
+
+</script>
+<!--arguments-->
+<script type="text/html">
+    // arguments 类似于数组
+    function sum2() {
+        var value=0;
+        for(var i=0;i<arguments.length;i++)
+            value +=arguments[i];
+        console.log(value);
+    }
+   sum2(1,2,3);
+
+</script>
+<!--匿名函数-->
+<script type="text/html">
+    //绑定事件
+    document.onclick =function () {
+        alert("点我干嘛");
+    }
+    //定时器
+    setInterval(function () {
+        console.log("1");
+    },1000);//ms
+
+    //自调用函数，一进来就执行，不用调用  (function)();+ tab
+    (function () {
+        alert("Yes")
+    })();
+
+</script>
+<!--回调函数-->
+<script type="text/html">
+   // 回调函数：在一个函数中调用另一个函数，常用作递归
+
+function fn(a,b,f) {
+    return f(a,b);
+}
+function sum(a,b) {
+    return a+b;
+}
+   function de(a,b) {
+       return a-b;
+   }
+   console.log(fn(1, 2, sum));;//调用
+</script>
+<script type="text/html">
+    var sum=2;
+    function fun() {
+     return sum+1;
+    }
+    console.log(fun());
+
+</script>
+
+</body>
+</html>

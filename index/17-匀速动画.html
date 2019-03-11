@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+          body{
+          position: relative;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<button id="btn">开始运动</button>
+<div id="box"></div>
+<script>
+    window.onload=function () {
+        //1.获取标签
+        var btn=document.getElementById("btn");
+        var box=document.getElementById("box");
+        //2.定义变量
+        var timer=null,begin=0,step=10,target=599;
+        btn.onclick=function () {
+            //清除定时器
+            clearInterval(timer);
+            //设置定时器
+            timer=setInterval(function () {//缓动动画： begin+=(target-begin)*缓动系数
+                begin+=step;//匀速动画
+                if(begin>=target){
+                    clearInterval(timer);
+                }
+                else{
+                    box.style.left=begin+'px';
+                }
+            },200);
+
+
+        }
+
+    }
+</script>
+</body>
+</html>

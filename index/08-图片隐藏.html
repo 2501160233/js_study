@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+ <button id="btn">隐藏</button>
+<img id="img" src="../images/bg-plane.png" alt="">
+<script>
+    window.onload=function () {
+
+        var btn=document.getElementById("btn");
+        var img=document.getElementById("img");
+        btn.onclick=function(){
+            //事件的驱动
+          //  innerText获取双标签中的文字
+            if(btn.innerText==="隐藏"){
+                img.style.display="none";
+                btn.innerText="显示";
+            }
+            else
+            {
+                img.style.display="block";
+                btn.innerText="隐藏";
+            }
+        }
+    }
+</script>
+</body>
+</html>

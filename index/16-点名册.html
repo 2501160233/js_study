@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #name{
+            font-size: 20px;
+            margin-top:20px;
+        }
+    </style>
+</head>
+
+<body>
+<button id="begin">开始点名</button>
+<button id="stop">结束点名</button>
+<div id="name">刘欢</div>
+<script>
+    window.onload=function () {
+        var timer=null;
+        var names=["刘欢","尤诺","章三","琉璃","欢欢","王浩"];
+        $("begin").onclick=function () {
+            //清除定时器
+            clearInterval(timer);
+           timer=setInterval(function () {
+                //设置随机数,0-1:Math.random()
+                 var s_index=parseInt(Math.random()*names.length);
+                 $("name").innerText=names[s_index];
+            },50);
+        }
+        $("stop").onclick=function () {
+            //清除定时器
+            clearInterval(timer);
+        }
+        //timer是全局变量
+
+    };
+    function $(id) {
+        return typeof id==="string"?document.getElementById(id):null;
+
+    }
+</script>
+</body>
+</html>

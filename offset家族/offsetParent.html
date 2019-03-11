@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #papa{
+            position: relative;
+        }
+        #father{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+ <div id="papa">
+     <div id="father">
+         <div id="son"></div>
+     </div>
+ </div>
+ <script>
+     //offsetParent找到离他最近的带有定位的父元素，可以是父亲爷爷...
+    // parentNode是直接找到父元素
+     var son=document.getElementById("son");
+     console.log(son.offsetParent);
+ </script>
+</body>
+</html>

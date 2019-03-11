@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="01-js.js"></script>
+</head>
+<body>
+<!--<button onclick="alert('hello world')"></button>-->
+<script type="text/html"></script><!--内容不能作用-->
+<script type="text/html">
+    alert("Hello World!");
+    document.write("hello world!");
+    console.log(1+2);
+</script>
+<script type="text/html">
+    //其他类型转字符串
+    var num1=3;
+    var num2="younuo";
+    var num3=5+'';
+    console.log(num1.toString());
+    console.log(typeof num1);
+    console.log(num1+num2);
+    console.log(typeof num3);
+</script>
+<script type="text/html">
+    var num="666";
+    var num2=Number(num);
+    console.log(typeof num2);
+    var num3="";
+    console.log(Number(num3));
+</script>
+<script type="text/html">
+    var num="123.1html456.3";
+    console.log(parseInt(num));//从前往后提取字符串中的有效整数，从前往后
+    console .log(parseFloat(num));//从前往后提取字符串中的有效浮点数，从前往后
+</script>
+<script type="text/html">
+    var num="123";
+    console.log(num+1);
+</script>
+</body>
+</html>

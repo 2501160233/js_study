@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            text-align: center;
+           background: url("../images/兰.jpg");
+            padding: 50px;
+        }
+        #div{
+            font-size: 100px;
+            color: red;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="div">5</div>
+<img id="img" src="../images/img5.jpg" alt="">
+<script>
+    window.onload=function () {
+        var timer=setInterval(function () {
+            $('div').innerText-=1;
+            if($("div").innerText==="0")
+            { //清除定时器
+                clearInterval(timer);
+                //隐藏时间
+                $('div').style.display='none';
+                //显示图片
+                 $('img').style.display='block';
+            }
+        },1000);
+
+    };
+    function $(id) {
+        return typeof id ==='string'?document.getElementById(id):null;
+
+    }
+</script>
+</body>
+</html>

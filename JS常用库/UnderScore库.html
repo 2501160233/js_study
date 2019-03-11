@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="js/Underscore.js"></script>
+<script>
+    var dataArr=['张三','李四','刘欢','尤诺'];
+    _.each(dataArr,function (item,index) {
+        console.log(item,index);
+    });
+    console.log(_.without(dataArr,'张三'));
+    console.log(_.random(-5,5));
+</script>
+
+</body>
+</html>

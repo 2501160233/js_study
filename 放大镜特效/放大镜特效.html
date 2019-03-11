@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 350px;
+            height: 350px;
+            margin: 20px 0px 0px 100px;
+            position: relative;
+        }
+        #small_box{
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        #small_box img{
+            width: 350px;
+            height: 350px;
+        }
+        span,#mask{
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255,255,0,.4);
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            cursor:move;
+            display: none;
+        }
+        #big_box{
+            width:600px;
+            height:600px;
+            border: 1px solid #ccc;
+            position: absolute;
+            left: 360px;
+            top: 0px;
+            overflow: hidden;
+            display: none;
+        }
+        #list{
+            margin-left: 100px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="small_box">
+        <img src="images/pic001.jpg" alt="">
+        <span id="mask"></span>
+    </div>
+    <div id="big_box">
+        <img src="images/pic01.jpg" alt=""style="position: absolute;left: 0;top: 0;">
+    </div>
+</div>
+<div id="list">
+     <img src="images/pic0001.jpg" alt="">
+     <img src="images/pic0002.jpg" alt="">
+     <img src="images/pic0003.jpg" alt="">
+</div>
+<script>
+    var box=document.getElementById("box");
+    var small_box=document.getElementById("small_box");
+    var small_img=small_box.children[0];
+    var mask=small_box.children[1];
+    var big_box=box.children[1];
+    var big_img=big_box.children[0];
+    var list_img=document.getElementById("list").children;
+   small_box.onmouseover=function () {
+       mask.style.display = "block";
+       big_box.style.display = "block";
+       //监听鼠标的移动
+      small_box.onmousemove = function (event){
+       var event = event || window.event;
+       var x = event.clientX - box.offsetLeft-mask.offsetWidth*0.5;
+       var y = event.clientY - box.offsetTop-mask.offsetHeight*0.5;
+       //边界检测
+            if(x<0){//判断左边
+                x=0;
+            }
+            else if(x>=small_box.offsetWidth-mask.offsetWidth){//判断右边
+                x=small_box.offsetWidth-mask.offsetWidth;
+            }
+          if(y<0){//上边
+              y=0;
+          }
+          else if(y>=small_box.offsetHeight-mask.offsetHeight){//下边
+              y=small_box.offsetHeight-mask.offsetHeight;
+          }
+       //让放大镜移动起来
+       mask.style.left = x+"px";
+       mask.style.top = y+"px";
+       //让大图动起来
+          /*smallX/bigX=small.width/大图的宽度
+            bigX=smallX/(smallBox.width/大图的宽度)
+          */
+          big_img.style.left= - x/(small_box.offsetWidth/big_box.offsetWidth)+"px";
+          big_img.style.top= - y/(small_box.offsetHeight/big_box.offsetHeight)+"px";
+          //移动需要定位******
+          //遍历列表图片
+         for(var i=0;i<list_img.length;i++){
+             (function (i) {
+                 var img=list_img[i];
+                 img.onmouseover=function () {
+                     small_box.children[0].src="images/pic00"+(i+1) +".jpg";
+                     big_img.src="images/pic0"+(i+1)+".jpg";
+                 }
+
+             })(i);
+         }
+   }
+    };
+    small_box.onmouseout=function () {
+        mask.style.display="none";
+        big_box .style.display="none";
+    }
+
+</script>
+</body>
+</html>

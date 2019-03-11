@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+</body>
+<script>
+    window.onload=function() {
+        //获取所有按钮
+        var btns = document.querySelectorAll("button");
+        //遍历
+        /* 1. for(var i=0;i<btns.length;i++){//同步，一次性执行完毕i=5
+            btns[i].onclick=function(){
+                alert("你点击了第"+i+"个按钮");
+            }
+            不正确
+        }*/
+        /*2. for(var i=0;i<btns.length;i++){//同步，一次性执行完毕i=5
+            btns[i].index.html=i+1;//索引赋值，遍历一遍完成后每个索引更改
+            btns[i].onclick=function(){
+                alert("你点击了第"+this.index.html+"个按钮");
+            }
+    };*/
+     /*  3. for (var i = 0; i < btns.length; i++) {
+            btns[i].id = i+1;//更改 id，遍历一遍完成后每个id更改
+            btns[i].onclick = function () {
+                alert("你点击了第" + this.id + "个按钮");
+            }
+        }*/
+        //4.闭包
+        for (var i = 0; i < btns.length; i++) {
+            (function (i) {
+                btns[i].onclick = function () {
+                    i=i+1;
+                    alert("你点击了第" + i + "个按钮");
+                }
+            })(i);
+        }
+    }
+</script>
+</html>

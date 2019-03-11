@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 500px;
+        background-color: red;
+    }
+</style>
+<body>
+<!--BOM浏览器对象模型-->
+<!--DOM文档对象模型：拿到元素、找对象、设置属性、样式、动态创建和删除元素、事件触发-->
+<div id="box">
+    <button id="btn">按钮</button>
+    <a id="aa" href="www">百度一下</a>
+</div>
+<!--<div>
+    <button id="box">按钮</button>
+    <span id="span">
+
+ </span>
+    <p>aaaaa</p>-->
+    <!--1.节点关系-->
+ <script type="text/html">
+        window.onload=function () {
+            var a=document.getElementById("aa") ;
+            //获取a父节点的父节点
+            var box1=a.parentNode.parentNode;
+            console.log(box1);
+        }
+    </script>
+<script type="text/html">
+        window.onload=function () {
+            var span=document.getElementById("span") ;
+            //获取span上一个兄弟节点
+            var previous=span.previousElementSibling;
+            //获取下一个兄弟节点
+            var next=span.nextElementSibling;
+            console.log(previous);
+            console.log(next);
+            //firstElementChild 获取第一个字节点
+            //lastElementChild 获取最后一个子节点
+            //children 获取所有子节点
+        }
+    </script>
+    <!--2.DOM节点的操作-->
+<script type="text/html">
+    // 增删改查
+        window.onload=function () {
+
+            //创建节点
+            var img=document.createElement("img");
+            img.src="images/bg-plane.png";
+            img.alt="none";
+            //增加节点img
+           // box.appendChild(img);
+            var btn=document.getElementById("btn");
+           box.insertBefore(img,btn);
+            //删除一个节点  .remove();
+    //.clone();
+        }
+</script>
+    <!--节点属性-->
+<script>
+    window.onload=function () {
+        var a=document.getElementById("aa");
+        //1,获取节点属性
+        console.log(a.getAttribute("id"));
+        console.log(a.getAttribute("href"));
+        //2.设置属性
+        a.setAttribute("href","bbbb");
+          //3.删除属性
+        a.removeAttribute("href");
+    }
+</script>
+</body>
+</html>
